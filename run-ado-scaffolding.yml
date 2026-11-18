@@ -1,0 +1,43 @@
+---
+- name: Generate Bootstrap Repo and Configure AAP
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    env: "{{ env | default('prod') }}"
+
+    generate_env_vars: true
+    generate_env_vars_force: true
+    bootstrap_generate_env_vars_force: true
+    generate_env_vars_use_aap: true
+    generate_env_vars_encrypt_vault_files: true
+    bootstrap_generate_env_vars_encrypt_vault_files: true
+    bootstrap_generate_env_vars_vault_password_file: "{{ vault_password_file | default('.vault_pass') }}"
+    bootstrap_hub_update_collection_only: "{{ bootstrap_hub_update_collection_only | default(false) | bool }}"
+    bootstrap_generate_env_vars_hub_ado_collection_path: "/workspace/ado-source"
+
+    generate_playbooks: "{{ not (bootstrap_hub_update_collection_only | default(false) | bool) }}"
+    generate_aap_configs: "{{ not (bootstrap_hub_update_collection_only | default(false) | bool) }}"
+    apply_aap_configs: true
+    # Hub-only still applies Hub collection publish + EE push via bootstrap_controller.
+    bootstrap_apply_aap_configs: "{{ not (bootstrap_hub_update_collection_only | default(false) | bool) }}"
+
+    bootstrap_generate_playbook_repo_git_mode: "{{ bootstrap_generate_playbook_repo_git_mode | default(generate_playbook_repo_git_mode | default('manual')) }}"
+    bootstrap_generate_playbook_repo_git_url: "{{ bootstrap_generate_playbook_repo_git_url | default(generate_playbook_repo_git_url | default('')) }}"
+    bootstrap_generate_playbook_repo_git_branch: "{{ bootstrap_generate_playbook_repo_git_branch | default(generate_playbook_repo_git_branch | default(aap_git_branch | default('main'))) }}"
+    bootstrap_generate_playbook_repo_git_message: "Generate ADO bootstrap content"
+    bootstrap_generate_playbook_repo_write_galaxy_requirements: "{{ bootstrap_generate_playbook_repo_write_galaxy_requirements | default(false) | bool }}"
+
+  pre_tasks:
+    - name: Load env var files when present (optional for hub-only / vars refresh)
+      ansible.builtin.include_vars:
+        file: "{{ playbook_dir }}/{{ item }}"
+      loop:
+        - "group_vars/all/{{ env }}/aap_config_vars.yml"
+        - "group_vars/all/{{ env }}/aap_vault.yml"
+        - "group_vars/all/{{ env }}/vault_machine_cred.yml"
+      when: (playbook_dir ~ '/' ~ item) is file
+
+  roles:
+    - role: infra.automation_development_office.bootstrap_controller

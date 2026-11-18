@@ -1,0 +1,11 @@
+---
+api_host: ''
+host: ''
+domain: prod.rhlab
+app_domain: apps.prod.rhlab
+apps_domain: apps.prod.rhlab
+app_domain_alt: ''
+apps_domain_alt: ''
+skip_tls_verify: true
+verify_ssl: false
+validate_certs: false

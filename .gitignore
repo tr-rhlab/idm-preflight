@@ -1,0 +1,11 @@
+.ansible/
+*.retry
+*.log
+.vault_pass
+# BEGIN ADO preflight secrets
+ado-preflight-*.json
+!ado-preflight-*.json.vault.yml
+ado-extra-vars.json
+.vault_pass
+.vault_pass.*
+# END ADO preflight secrets

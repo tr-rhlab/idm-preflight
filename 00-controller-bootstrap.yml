@@ -1,0 +1,16 @@
+---
+- name: Bootstrap Controller
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars:
+    env: "{{ env | default('prod') }}"
+
+    generate_env_vars: "{{ generate_env_vars | default(true) }}"
+    generate_playbooks: "{{ generate_playbooks | default(true) }}"
+    generate_aap_configs: "{{ generate_aap_configs | default(true) }}"
+    apply_aap_configs: "{{ apply_aap_configs | default(true) }}"
+
+  roles:
+    - role: infra.automation_development_office.bootstrap_controller

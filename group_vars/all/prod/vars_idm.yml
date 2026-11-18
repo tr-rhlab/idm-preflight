@@ -1,0 +1,71 @@
+---
+components_env:
+  idm:
+    hostname: idm.tr.rhlab
+    domain: tr.rhlab
+    realm: TR.RHLAB
+idm_hostname: idm.tr.rhlab
+idm_server_name: idm.tr.rhlab
+idm_domain: tr.rhlab
+idm_realm: TR.RHLAB
+ipaclient_domain: tr.rhlab
+ipaclient_realm: TR.RHLAB
+ipaclient_servers:
+- idm.tr.rhlab
+ipaclient_no_dns_lookup: true
+idm_ad_trust_ad_domain: ad.lab
+idm_ad_trust_ad_realm: AD.LAB
+idm_ad_trust_ad_dc_hostname: ''
+idm_ad_trust_ad_dc_ip: 192.168.0.61
+idm_ad_trust_ad_admin: Administrator
+idm_ad_trust_ipa_domain: tr.rhlab
+idm_ad_trust_ipa_realm: TR.RHLAB
+idm_ad_trust_two_way: true
+idm_ad_trust_configure_groups: true
+component_config:
+  idm:
+    hostname: idm.tr.rhlab
+    domain: tr.rhlab
+    realm: TR.RHLAB
+    replica_hostname: ''
+    replica_install_dns: true
+    replica_install_ca: true
+    auto_forwarders: true
+    custom_cert_file: ''
+    custom_cert_key_file: ''
+    custom_cert_chain_file: ''
+    ad_domain: ''
+    ad_dc_hostname: ''
+    ad_dc_ip: ''
+    ad_admin: Administrator
+    ad_two_way: true
+    ad_configure_groups: true
+    ad_map_group: ''
+    ad_map_admins_group: ''
+hostname: idm.tr.rhlab
+domain: tr.rhlab
+realm: TR.RHLAB
+replica_hostname: ''
+replica_install_dns: true
+replica_install_ca: true
+auto_forwarders: true
+custom_cert_file: ''
+custom_cert_key_file: ''
+custom_cert_chain_file: ''
+ad_domain: ''
+ad_dc_hostname: ''
+ad_dc_ip: ''
+ad_admin: Administrator
+ad_two_way: true
+ad_configure_groups: true
+ad_map_group: ''
+ad_map_admins_group: ''
+idm_configure_replica_server: idm.tr.rhlab
+idm_configure_replica_domain: tr.rhlab
+idm_configure_replica_realm: TR.RHLAB
+idm_replica_install_dns: true
+idm_configure_replica_setup_dns: true
+idm_replica_install_ca: true
+idm_configure_replica_setup_ca: true
+idm_auto_forwarders: true
+idm_configure_replica_auto_forwarders: true

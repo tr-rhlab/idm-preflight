@@ -1,0 +1,488 @@
+{
+  "version": 1,
+  "environment": "prod",
+  "steps": [
+    {
+      "id": "playbooks/idm/ado-install-server-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-install-server-bootstrap.yml",
+      "component": "idm_server_install",
+      "title": "ADO | IdM Install Server",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": []
+    },
+    {
+      "id": "playbooks/idm/ado-manage-client-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-manage-client-bootstrap.yml",
+      "component": "idm_client_tools",
+      "title": "ADO | IdM Manage Client",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": [
+        "playbooks/rhel/ado-patch-host-bootstrap.yml"
+      ]
+    },
+    {
+      "id": "playbooks/idm/ado-manage-dns-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-manage-dns-bootstrap.yml",
+      "component": "idm_dns_install",
+      "title": "ADO | IdM Manage Dns",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": []
+    },
+    {
+      "id": "playbooks/idm/ado-manage-server-settings-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-manage-server-settings-bootstrap.yml",
+      "component": "idm_server_install",
+      "title": "ADO | IdM Manage Server Settings",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": []
+    },
+    {
+      "id": "playbooks/idm/ado-manage-sudo-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-manage-sudo-bootstrap.yml",
+      "component": "idm_server_install",
+      "title": "ADO | IdM Manage Sudo",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": []
+    },
+    {
+      "id": "playbooks/idm/ado-manage-topology-bootstrap.yml",
+      "playbook": "playbooks/idm/ado-manage-topology-bootstrap.yml",
+      "component": "idm_server_install",
+      "title": "ADO | IdM Manage Topology",
+      "recommended": true,
+      "fields": [],
+      "extra_vars": {},
+      "available": true,
+      "reason": "",
+      "depends_on": []
+    }
+  ],
+  "edges": {
+    "playbooks/aap/ado-aap-ocp-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/acs/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml": [
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml"
+    ],
+    "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml": [
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml"
+    ],
+    "playbooks/dev_hub/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/dev_hub/ado-deploy-oidc-bootstrap.yml": [
+      "playbooks/dev_hub/ado-deploy-install-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/devspaces/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/dirsrv/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/docs/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/docs/ado-deploy-oidc-bootstrap.yml": [
+      "playbooks/docs/ado-deploy-install-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/eck/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/gitlab/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/gitops/ado-deploy-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-create-custom-route.yml": [
+      "playbooks/grafana/ado-deploy-alerts-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-alerts-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-datasource-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-email-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-folders-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-deploy-oidc-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml": [
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/idm/ado-manage-client-bootstrap.yml": [
+      "playbooks/rhel/ado-patch-host-bootstrap.yml"
+    ],
+    "playbooks/kafka/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/minio/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/minio/ado-deploy-oidc-bootstrap.yml": [
+      "playbooks/minio/ado-deploy-install-bootstrap.yml",
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/netbox/ado-configure-netbox-oidc-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/oadp/ado-deploy-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/openshift/ado-add-alt-routes-bootstrap.yml": [
+      "playbooks/aap/ado-aap-ocp-install-bootstrap.yml",
+      "playbooks/acm/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/acs/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-install-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/devspaces/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dirsrv/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/docs/ado-deploy-install-bootstrap.yml",
+      "playbooks/docs/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/eck/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitlab/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitops/ado-deploy-bootstrap.yml",
+      "playbooks/grafana/ado-create-custom-route.yml",
+      "playbooks/grafana/ado-deploy-alerts-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/kafka/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/minio/ado-deploy-install-bootstrap.yml",
+      "playbooks/minio/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/mtv/ado-deploy-bootstrap.yml",
+      "playbooks/netbox/ado-configure-netbox-oidc-bootstrap.yml",
+      "playbooks/oadp/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_compliance/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_descheduler/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_virtualization/ado-deploy-bootstrap.yml",
+      "playbooks/openshift/ado-configure-console-banner-bootstrap.yml",
+      "playbooks/openshift/ado-configure-ldap-auth-bootstrap.yml",
+      "playbooks/openshift/ado-create-htpass-user-bootstrap.yml",
+      "playbooks/openshift/ado-enable-integrated-image-registry-bootstrap.yml",
+      "playbooks/openshift/ado-install-iscsi-csi-bootstrap.yml",
+      "playbooks/openshift/ado-install-nfs-csi-bootstrap.yml",
+      "playbooks/openshift/ado-print-alt-routes-bootstrap.yml",
+      "playbooks/openshift/ado-update-pull-secret-bootstrap.yml",
+      "playbooks/pega/ado-install-and-configure-bootstrap.yml",
+      "playbooks/quay/ado-deploy-install-bootstrap.yml",
+      "playbooks/quay/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/web_terminal/ado-deploy-bootstrap.yml",
+      "playbooks/zabbix/ado-configure-saml-bootstrap.yml",
+      "playbooks/zabbix/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/openshift/ado-add-ingress-with-route-bootstrap.yml": [
+      "playbooks/aap/ado-aap-ocp-install-bootstrap.yml",
+      "playbooks/acm/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/acs/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-install-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/devspaces/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dirsrv/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/docs/ado-deploy-install-bootstrap.yml",
+      "playbooks/docs/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/eck/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitlab/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitops/ado-deploy-bootstrap.yml",
+      "playbooks/grafana/ado-create-custom-route.yml",
+      "playbooks/grafana/ado-deploy-alerts-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/kafka/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/minio/ado-deploy-install-bootstrap.yml",
+      "playbooks/minio/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/mtv/ado-deploy-bootstrap.yml",
+      "playbooks/netbox/ado-configure-netbox-oidc-bootstrap.yml",
+      "playbooks/oadp/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_compliance/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_descheduler/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_virtualization/ado-deploy-bootstrap.yml",
+      "playbooks/openshift/ado-add-alt-routes-bootstrap.yml",
+      "playbooks/openshift/ado-configure-console-banner-bootstrap.yml",
+      "playbooks/openshift/ado-configure-ldap-auth-bootstrap.yml",
+      "playbooks/openshift/ado-create-htpass-user-bootstrap.yml",
+      "playbooks/openshift/ado-enable-integrated-image-registry-bootstrap.yml",
+      "playbooks/openshift/ado-install-iscsi-csi-bootstrap.yml",
+      "playbooks/openshift/ado-install-nfs-csi-bootstrap.yml",
+      "playbooks/openshift/ado-update-pull-secret-bootstrap.yml",
+      "playbooks/pega/ado-install-and-configure-bootstrap.yml",
+      "playbooks/quay/ado-deploy-install-bootstrap.yml",
+      "playbooks/quay/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/web_terminal/ado-deploy-bootstrap.yml",
+      "playbooks/zabbix/ado-configure-saml-bootstrap.yml",
+      "playbooks/zabbix/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml": [
+      "playbooks/rhbk/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-client-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-client-scope-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-entraid-idp.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-rhbk-login-events-exporter-bootstrap.yml",
+      "playbooks/rhbk/ado-setup-mapper-bootstrap.yml"
+    ],
+    "playbooks/openshift/ado-discover-routes-print-bootstrap.yml": [
+      "playbooks/aap/ado-aap-ocp-install-bootstrap.yml",
+      "playbooks/acm/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/acs/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-install-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/devspaces/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dirsrv/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/docs/ado-deploy-install-bootstrap.yml",
+      "playbooks/docs/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/eck/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitlab/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitops/ado-deploy-bootstrap.yml",
+      "playbooks/grafana/ado-create-custom-route.yml",
+      "playbooks/grafana/ado-deploy-alerts-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/kafka/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/minio/ado-deploy-install-bootstrap.yml",
+      "playbooks/minio/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/mtv/ado-deploy-bootstrap.yml",
+      "playbooks/netbox/ado-configure-netbox-oidc-bootstrap.yml",
+      "playbooks/oadp/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_compliance/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_descheduler/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_virtualization/ado-deploy-bootstrap.yml",
+      "playbooks/openshift/ado-configure-console-banner-bootstrap.yml",
+      "playbooks/openshift/ado-configure-ldap-auth-bootstrap.yml",
+      "playbooks/openshift/ado-create-htpass-user-bootstrap.yml",
+      "playbooks/openshift/ado-enable-integrated-image-registry-bootstrap.yml",
+      "playbooks/openshift/ado-install-iscsi-csi-bootstrap.yml",
+      "playbooks/openshift/ado-install-nfs-csi-bootstrap.yml",
+      "playbooks/openshift/ado-update-pull-secret-bootstrap.yml",
+      "playbooks/pega/ado-install-and-configure-bootstrap.yml",
+      "playbooks/quay/ado-deploy-install-bootstrap.yml",
+      "playbooks/quay/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/web_terminal/ado-deploy-bootstrap.yml",
+      "playbooks/zabbix/ado-configure-saml-bootstrap.yml",
+      "playbooks/zabbix/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/openshift/ado-print-alt-routes-bootstrap.yml": [
+      "playbooks/aap/ado-aap-ocp-install-bootstrap.yml",
+      "playbooks/acm/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/acs/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-install-bootstrap.yml",
+      "playbooks/dev_hub/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/devspaces/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/dirsrv/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/docs/ado-deploy-install-bootstrap.yml",
+      "playbooks/docs/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/eck/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitlab/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/gitops/ado-deploy-bootstrap.yml",
+      "playbooks/grafana/ado-create-custom-route.yml",
+      "playbooks/grafana/ado-deploy-alerts-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-dashboards-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-datasource-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-email-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-folders-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-install-bootstrap.yml",
+      "playbooks/grafana/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/grafana/ado-install-grafana-standalone-bootstrap.yml",
+      "playbooks/kafka/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/minio/ado-deploy-install-bootstrap.yml",
+      "playbooks/minio/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/mtv/ado-deploy-bootstrap.yml",
+      "playbooks/netbox/ado-configure-netbox-oidc-bootstrap.yml",
+      "playbooks/oadp/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_compliance/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_descheduler/ado-deploy-bootstrap.yml",
+      "playbooks/ocp_virtualization/ado-deploy-bootstrap.yml",
+      "playbooks/openshift/ado-configure-console-banner-bootstrap.yml",
+      "playbooks/openshift/ado-configure-ldap-auth-bootstrap.yml",
+      "playbooks/openshift/ado-create-htpass-user-bootstrap.yml",
+      "playbooks/openshift/ado-enable-integrated-image-registry-bootstrap.yml",
+      "playbooks/openshift/ado-install-iscsi-csi-bootstrap.yml",
+      "playbooks/openshift/ado-install-nfs-csi-bootstrap.yml",
+      "playbooks/openshift/ado-update-pull-secret-bootstrap.yml",
+      "playbooks/pega/ado-install-and-configure-bootstrap.yml",
+      "playbooks/quay/ado-deploy-install-bootstrap.yml",
+      "playbooks/quay/ado-deploy-oidc-bootstrap.yml",
+      "playbooks/web_terminal/ado-deploy-bootstrap.yml",
+      "playbooks/zabbix/ado-configure-saml-bootstrap.yml",
+      "playbooks/zabbix/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/pega/ado-install-and-configure-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/quay/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ],
+    "playbooks/quay/ado-deploy-oidc-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml",
+      "playbooks/quay/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-deploy-and-configure-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-manage-client-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-client-scope-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-entraid-idp.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-setup-mapper-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-manage-client-scope-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-entraid-idp.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-realm-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-manage-entraid-idp.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-manage-realm-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-deploy-and-configure-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-realm-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-rhbk-login-events-exporter-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml"
+    ],
+    "playbooks/rhbk/ado-setup-mapper-bootstrap.yml": [
+      "playbooks/cert-manager/ado-configure-idm-acme-clusterissuer.yml",
+      "playbooks/cert-manager/ado-deploy-and-configure-bootstrap.yml",
+      "playbooks/cert-manager/ado-install-and-configure-awspca-bootstrap.yml",
+      "playbooks/cert-manager/ado-update-default-ingress-cert-bootstrap.yml",
+      "playbooks/rhbk/ado-manage-realm-bootstrap.yml",
+      "playbooks/rhbk/ado-realm-bootstrap.yml"
+    ],
+    "playbooks/rhel/ado-compliance-bootstrap.yml": [
+      "playbooks/idm/ado-manage-client-bootstrap.yml"
+    ],
+    "playbooks/rhel/ado-patch-host-bootstrap.yml": [
+      "playbooks/satellite/ado-register-to-satellite-bootstrap.yml"
+    ],
+    "playbooks/rhel/ado-stig-hardening-bootstrap.yml": [
+      "playbooks/rhel/ado-compliance-bootstrap.yml"
+    ],
+    "playbooks/satellite/ado-configure-satellite-bootstrap.yml": [
+      "playbooks/satellite/ado-install-satellite-bootstrap.yml"
+    ],
+    "playbooks/zabbix/ado-configure-saml-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml",
+      "playbooks/zabbix/ado-deploy-install-bootstrap.yml"
+    ],
+    "playbooks/zabbix/ado-deploy-install-bootstrap.yml": [
+      "playbooks/openshift/ado-configure-oauth-with-rhbk-bootstrap.yml"
+    ]
+  }
+}

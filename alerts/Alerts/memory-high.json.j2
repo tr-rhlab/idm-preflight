@@ -1,0 +1,97 @@
+{
+  "uid": "ado-memory-high-{{ grafana_upload_alerts_datasource_slug }}",
+  "title": "Node or pod memory critically high ({{ grafana_upload_alerts_datasource_name }})",
+  "condition": "C",
+  "data": [
+    {
+      "refId": "A",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
+      },
+      "datasourceUid": "{{ grafana_upload_alerts_datasource_uid }}",
+      "model": {
+        "editorMode": "code",
+        "expr": "(count((1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) > 0.92) or vector(0)) + (count((container_memory_working_set_bytes{container!=\"\",container!=\"POD\"} / on (namespace, pod, container) group_left () kube_pod_container_resource_limits{resource=\"memory\"}) > 0.95) or vector(0))",
+        "instant": true,
+        "intervalMs": 1000,
+        "maxDataPoints": 43200,
+        "refId": "A"
+      }
+    },
+    {
+      "refId": "B",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
+      },
+      "datasourceUid": "__expr__",
+      "model": {
+        "datasource": {
+          "type": "__expr__",
+          "uid": "__expr__"
+        },
+        "expression": "A",
+        "reducer": "last",
+        "refId": "B",
+        "type": "reduce"
+      }
+    },
+    {
+      "refId": "C",
+      "queryType": "",
+      "relativeTimeRange": {
+        "from": 600,
+        "to": 0
+      },
+      "datasourceUid": "__expr__",
+      "model": {
+        "datasource": {
+          "type": "__expr__",
+          "uid": "__expr__"
+        },
+        "expression": "B",
+        "refId": "C",
+        "type": "threshold",
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "C"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ]
+      }
+    }
+  ],
+  "noDataState": "OK",
+  "execErrState": "Error",
+  "for": "20m",
+  "annotations": {
+    "summary": "At least two offenders: a node above 92 percent memory used, and/or pods above 95 percent of their memory limit. Pods without a limit are not included."
+  },
+  "labels": {
+    "ado": "openshift-default",
+    "cluster": "{{ grafana_upload_alerts_datasource_name }}"
+  },
+  "folderUID": "{{ grafana_upload_alerts_folder_uid }}",
+  "ruleGroup": "openshift-{{ grafana_upload_alerts_datasource_slug }}",
+  "orgID": 1
+}
