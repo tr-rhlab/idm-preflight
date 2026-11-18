@@ -1,8 +1,0 @@
----
-- name: ADO | Manage IDM DNS
-  hosts: ipaserver
-  gather_facts: false
-  tasks:
-    - name: ADO | Manage IDM DNS records
-      ansible.builtin.debug:
-        msg: 'TODO: Add IDM DNS management tasks/role here'

@@ -15,18 +15,6 @@
       "depends_on": []
     },
     {
-      "id": "playbooks/idm/ado-manage-dns-bootstrap.yml",
-      "playbook": "playbooks/idm/ado-manage-dns-bootstrap.yml",
-      "component": "idm_dns_install",
-      "title": "ADO | IdM Manage Dns",
-      "recommended": true,
-      "fields": [],
-      "extra_vars": {},
-      "available": true,
-      "reason": "",
-      "depends_on": []
-    },
-    {
       "id": "playbooks/idm/ado-manage-server-settings-bootstrap.yml",
       "playbook": "playbooks/idm/ado-manage-server-settings-bootstrap.yml",
       "component": "idm_server_install",
