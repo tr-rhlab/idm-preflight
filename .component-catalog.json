@@ -1,9 +1,37 @@
 [
     {
+        "app": "idm_server_install",
+        "category": "patching",
+        "dest": "playbooks/idm/ado-install-server-bootstrap.yml",
+        "src": "idm/ado-install-server-bootstrap.yml",
+        "target_platform": "linux"
+    },
+    {
         "app": "idm_dns_install",
         "category": "patching",
         "dest": "playbooks/idm/ado-manage-dns-bootstrap.yml",
         "src": "idm/ado-manage-dns-bootstrap.yml",
+        "target_platform": "linux"
+    },
+    {
+        "app": "idm_server_install",
+        "category": "patching",
+        "dest": "playbooks/idm/ado-manage-server-settings-bootstrap.yml",
+        "src": "idm/ado-manage-server-settings-bootstrap.yml",
+        "target_platform": "linux"
+    },
+    {
+        "app": "idm_server_install",
+        "category": "patching",
+        "dest": "playbooks/idm/ado-manage-sudo-bootstrap.yml",
+        "src": "idm/ado-manage-sudo-bootstrap.yml",
+        "target_platform": "linux"
+    },
+    {
+        "app": "idm_server_install",
+        "category": "patching",
+        "dest": "playbooks/idm/ado-manage-topology-bootstrap.yml",
+        "src": "idm/ado-manage-topology-bootstrap.yml",
         "target_platform": "linux"
     }
 ]
