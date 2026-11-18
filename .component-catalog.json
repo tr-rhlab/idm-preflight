@@ -7,13 +7,6 @@
         "target_platform": "linux"
     },
     {
-        "app": "idm_client_tools",
-        "category": "patching",
-        "dest": "playbooks/idm/ado-manage-client-bootstrap.yml",
-        "src": "idm/ado-manage-client-bootstrap.yml",
-        "target_platform": "linux"
-    },
-    {
         "app": "idm_dns_install",
         "category": "patching",
         "dest": "playbooks/idm/ado-manage-dns-bootstrap.yml",
